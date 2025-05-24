@@ -3,9 +3,9 @@ import Image from "next/image"
 
 export function Categories() {
   const categories = [
-    { name: "Áo", image: "/placeholder.svg?height=600&width=400", href: "/categories/shirts" },
-    { name: "Quần", image: "/placeholder.svg?height=600&width=400", href: "/categories/pants" },
-    { name: "Phụ kiện", image: "/placeholder.svg?height=600&width=400", href: "/categories/accessories" },
+    { name: "Áo", image: "https://mikenco.vn/cdn/shop/collections/ForHim.png?v=1742888426&width=1500", href: "/categories/shirts" },
+    { name: "Quần", image: "https://mikenco.vn/cdn/shop/collections/ForHer.png?v=1742888405&width=1500", href: "/categories/pants" },
+    { name: "Phụ kiện", image: "https://mikenco.vn/cdn/shop/collections/474051075_1892619697811778_5842878109374202256_n.jpg?v=1742888376&width=1500", href: "/categories/accessories" },
   ]
 
   return (
@@ -22,9 +22,9 @@ export function Categories() {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                {/* <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                   <h3 className="text-white text-2xl font-medium">{category.name}</h3>
-                </div>
+                </div> */}
               </div>
             </Link>
           ))}

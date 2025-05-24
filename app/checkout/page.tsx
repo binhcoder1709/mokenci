@@ -1,47 +1,61 @@
-import Link from "next/link"
-import Image from "next/image"
-import { ChevronRight, CreditCard } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import Link from 'next/link';
+import Image from 'next/image';
+import { ChevronRight, CreditCard } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Checkbox } from '@/components/ui/checkbox';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
 
 export default function CheckoutPage() {
   // Giả lập dữ liệu giỏ hàng
   const cartItems = [
     {
       id: 1,
-      name: "Áo sơ mi đen",
-      price: 850000,
+      name: 'NO REGREST TSHIRT',
+      price: 450000,
       quantity: 1,
-      size: "L",
-      color: "Đen",
-      image: "/placeholder.svg?height=600&width=400",
+      size: 'L',
+      color: 'Đen',
+      image:
+        'https://mikenco.vn/cdn/shop/files/482929940_9439610476115608_8800876759911662406_n.jpg?v=1747219831&width=533',
     },
     {
       id: 2,
-      name: "Quần jean đen",
-      price: 950000,
+      name: 'GENERATION STREETWEAR TSHIRT',
+      price: 650000,
       quantity: 1,
-      size: "M",
-      color: "Đen",
-      image: "/placeholder.svg?height=600&width=400",
+      size: 'M',
+      color: 'Đen',
+      image:
+        'https://mikenco.vn/cdn/shop/files/483231342_1826073481559198_2642620884227569908_n.jpg?v=1747219832&width=533',
     },
-  ]
+  ];
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" }).format(price)
-  }
+    return new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND',
+    }).format(price);
+  };
 
-  const subtotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0)
-  const shipping = 30000
-  const total = subtotal + shipping
+  const subtotal = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+  const shipping = 30000;
+  const total = subtotal + shipping;
 
   return (
     <>
@@ -114,33 +128,51 @@ export default function CheckoutPage() {
                   </div>
                   <div className="md:col-span-2">
                     <Label htmlFor="note">Ghi chú</Label>
-                    <Textarea id="note" placeholder="Ghi chú về đơn hàng" className="mt-1" />
+                    <Textarea
+                      id="note"
+                      placeholder="Ghi chú về đơn hàng"
+                      className="mt-1"
+                    />
                   </div>
                 </div>
               </div>
 
               {/* Shipping Method */}
               <div className="bg-white p-6 rounded-lg shadow-sm">
-                <h2 className="text-lg font-bold mb-4">Phương thức vận chuyển</h2>
+                <h2 className="text-lg font-bold mb-4">
+                  Phương thức vận chuyển
+                </h2>
 
                 <RadioGroup defaultValue="standard">
                   <div className="flex items-start space-x-3 p-3 border rounded-md mb-3">
-                    <RadioGroupItem value="standard" id="standard" className="mt-1" />
+                    <RadioGroupItem
+                      value="standard"
+                      id="standard"
+                      className="mt-1"
+                    />
                     <div className="flex-1">
                       <Label htmlFor="standard" className="font-medium">
                         Giao hàng tiêu chuẩn
                       </Label>
-                      <p className="text-sm text-gray-500 mt-1">Nhận hàng trong 3-5 ngày làm việc</p>
+                      <p className="text-sm text-gray-500 mt-1">
+                        Nhận hàng trong 3-5 ngày làm việc
+                      </p>
                     </div>
                     <div className="font-medium">{formatPrice(30000)}</div>
                   </div>
                   <div className="flex items-start space-x-3 p-3 border rounded-md">
-                    <RadioGroupItem value="express" id="express" className="mt-1" />
+                    <RadioGroupItem
+                      value="express"
+                      id="express"
+                      className="mt-1"
+                    />
                     <div className="flex-1">
                       <Label htmlFor="express" className="font-medium">
                         Giao hàng nhanh
                       </Label>
-                      <p className="text-sm text-gray-500 mt-1">Nhận hàng trong 1-2 ngày làm việc</p>
+                      <p className="text-sm text-gray-500 mt-1">
+                        Nhận hàng trong 1-2 ngày làm việc
+                      </p>
                     </div>
                     <div className="font-medium">{formatPrice(60000)}</div>
                   </div>
@@ -149,7 +181,9 @@ export default function CheckoutPage() {
 
               {/* Payment Method */}
               <div className="bg-white p-6 rounded-lg shadow-sm">
-                <h2 className="text-lg font-bold mb-4">Phương thức thanh toán</h2>
+                <h2 className="text-lg font-bold mb-4">
+                  Phương thức thanh toán
+                </h2>
 
                 <RadioGroup defaultValue="cod">
                   <div className="flex items-start space-x-3 p-3 border rounded-md mb-3">
@@ -158,7 +192,9 @@ export default function CheckoutPage() {
                       <Label htmlFor="cod" className="font-medium">
                         Thanh toán khi nhận hàng (COD)
                       </Label>
-                      <p className="text-sm text-gray-500 mt-1">Thanh toán bằng tiền mặt khi nhận hàng</p>
+                      <p className="text-sm text-gray-500 mt-1">
+                        Thanh toán bằng tiền mặt khi nhận hàng
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3 p-3 border rounded-md mb-3">
@@ -167,7 +203,9 @@ export default function CheckoutPage() {
                       <Label htmlFor="bank" className="font-medium">
                         Chuyển khoản ngân hàng
                       </Label>
-                      <p className="text-sm text-gray-500 mt-1">Chuyển khoản đến tài khoản ngân hàng của chúng tôi</p>
+                      <p className="text-sm text-gray-500 mt-1">
+                        Chuyển khoản đến tài khoản ngân hàng của chúng tôi
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3 p-3 border rounded-md">
@@ -176,7 +214,9 @@ export default function CheckoutPage() {
                       <Label htmlFor="card" className="font-medium">
                         Thẻ tín dụng/Ghi nợ
                       </Label>
-                      <p className="text-sm text-gray-500 mt-1">Thanh toán an toàn với cổng thanh toán</p>
+                      <p className="text-sm text-gray-500 mt-1">
+                        Thanh toán an toàn với cổng thanh toán
+                      </p>
                       <div className="flex space-x-2 mt-2">
                         <CreditCard className="h-6 w-6 text-gray-400" />
                         <CreditCard className="h-6 w-6 text-gray-400" />
@@ -198,7 +238,7 @@ export default function CheckoutPage() {
                     <div key={item.id} className="flex space-x-4">
                       <div className="relative w-16 h-16 flex-shrink-0">
                         <Image
-                          src={item.image || "/placeholder.svg"}
+                          src={item.image || '/placeholder.svg'}
                           alt={item.name}
                           fill
                           className="object-cover rounded"
@@ -213,7 +253,9 @@ export default function CheckoutPage() {
                           {item.size} / {item.color}
                         </p>
                       </div>
-                      <div className="text-sm font-medium">{formatPrice(item.price * item.quantity)}</div>
+                      <div className="text-sm font-medium">
+                        {formatPrice(item.price * item.quantity)}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -241,7 +283,7 @@ export default function CheckoutPage() {
                     <Checkbox id="terms" className="mt-1" />
                     <div className="text-sm">
                       <Label htmlFor="terms">
-                        Tôi đã đọc và đồng ý với{" "}
+                        Tôi đã đọc và đồng ý với{' '}
                         <Link href="/terms" className="text-black underline">
                           điều khoản và điều kiện
                         </Link>
@@ -249,10 +291,13 @@ export default function CheckoutPage() {
                     </div>
                   </div>
 
-                  <Button className="w-full">Đặt hàng</Button>
+                  <Button className="w-full">
+                    <Link href={'/checkout/success'}>Đặt hàng</Link>
+                  </Button>
 
                   <p className="text-xs text-gray-500 text-center">
-                    Bằng cách nhấn nút Đặt hàng, bạn đồng ý với các điều khoản và điều kiện của chúng tôi
+                    Bằng cách nhấn nút Đặt hàng, bạn đồng ý với các điều khoản
+                    và điều kiện của chúng tôi
                   </p>
                 </div>
               </div>
@@ -262,5 +307,5 @@ export default function CheckoutPage() {
       </main>
       <Footer />
     </>
-  )
+  );
 }

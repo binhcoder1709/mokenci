@@ -27,7 +27,7 @@ export function Hero() {
   return (
     <div className="relative h-screen w-full overflow-hidden">
       <div className="absolute inset-0">
-        <Image src="/placeholder.svg?height=1080&width=1920" alt="Hero image" fill priority className="object-cover" />
+        <Image src="https://mikenco.vn/cdn/shop/files/20250514-135236.jpg?v=1747209582&width=3840" alt="Hero image" fill priority className="object-cover" />
       </div>
       <div className="absolute inset-0 bg-black/20" />
 
